@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text;
 using System.Security.Cryptography;
+using System.Web;
 
 namespace Pixeval.Extensions.Translators.Baidu.Client;
 #nullable disable
@@ -94,30 +95,35 @@ public class BaiduTranslatorClient
     /// <param name="salt">设置后将使用传入的随机数</param>
     /// <param name="sign">设置后将使用传入的签名结果</param>
     /// <returns></returns>
-    public async Task<BaiduTranslateResult> Translate(string text, string toLanguage, string fromLanguage = "auto", string salt = "", string sign = "")
+    public async Task<BaiduTranslateResult> Translate(string text, string toLanguage, string fromLanguage = "auto")
     {
-        // 使用时间戳
-        if (string.IsNullOrWhiteSpace(salt))
-        {
-            salt = DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
-        }
-        // 使用MD5加密
-        if (string.IsNullOrWhiteSpace(sign))
-        {
-            sign = (_appId + text + salt + _secretKey).MD5();
-        }
-        // 拼接URL
-        string url = $"{_endpoint}?q={text}&from={fromLanguage}&to={toLanguage}&appid={_appId}&salt={salt}&sign={sign}";
-        // 发送请求
+
+        var salt = new Random()
+            .NextInt64(10000000000)
+            .ToString()
+            .PadLeft(10, '0');
+        var sign = BitConverter.ToString(
+                MD5.Create().ComputeHash(Encoding.Default.GetBytes(
+                    _appId + text + salt + _secretKey)))
+            .Replace("-", "")
+            .ToLower();
+
+        var query = new StringBuilder()
+            .Append($"?q={HttpUtility.UrlEncode(text)}")
+            .Append($"&from={fromLanguage}")
+            .Append($"&to={toLanguage}")
+            .Append($"&appid={_appId}")
+            .Append($"&salt={salt}")
+            .Append($"&sign={sign}")
+            .ToString();
+        var url = _endpoint + query;
+
+
         try
         {
 #if NET6_0_OR_GREATER
             //return await _httpClient.GetFromJsonAsync<BaiduTranslateResult>(url);
             var response = await _httpClient.GetAsync(url);
-            var options = new JsonSerializerOptions
-            {
-                TypeInfoResolver = SourceGenerationContext.Default,
-            };
             if (response.IsSuccessStatusCode)
             {
                 var str = await response.Content.ReadAsStringAsync();
@@ -265,7 +271,7 @@ public static class Cryptography
             var result = md5.ComputeHash(Encoding.UTF8.GetBytes(str));
             var strResult = isBig ? BitConverter.ToString(result) : BitConverter.ToString(result, 4, 8);
             return isUpper ? strResult.Replace("-", "") : strResult.Replace("-", "").ToLower();
-        }
+        }       
     }
 
     /// <summary>

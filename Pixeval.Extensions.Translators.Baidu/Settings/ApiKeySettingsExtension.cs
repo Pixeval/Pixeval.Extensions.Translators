@@ -11,7 +11,7 @@ public partial class ApiKeySettingsExtension:StringSettingsExtensionBase
 
     public override void OnValueChanged(string value)
     {
-        ExtensionsHost.Current.Translator.AuthKey = value;
+        ExtensionsHost.Current.Translator.AuthKey = value.TrimStart('"');
     }
 
     public override string? Placeholder { get; }

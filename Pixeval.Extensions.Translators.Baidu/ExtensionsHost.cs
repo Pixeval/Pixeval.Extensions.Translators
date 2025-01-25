@@ -59,6 +59,6 @@ public partial class ExtensionsHost:ExtensionsHostBase
     public ExtensionsHost()
     {
         Translator = new BaiduTranslator();
-        Extensions = [Translator,new AppIdSettingsExtension(),new ApiKeySettingsExtension()];
+        Extensions = [Translator, new AppIdSettingsExtension(), new ApiKeySettingsExtension()];
     }
 }

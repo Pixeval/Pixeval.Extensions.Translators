@@ -11,7 +11,7 @@ public partial class AppIdSettingsExtension : StringSettingsExtensionBase
 
     public override void OnValueChanged(string value)
     {
-        ExtensionsHost.Current.Translator.AppId = value;
+        ExtensionsHost.Current.Translator.AppId = value.TrimStart('"');
     }
 
     public override string? Placeholder { get; }
