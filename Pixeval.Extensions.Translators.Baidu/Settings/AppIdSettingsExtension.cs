@@ -24,7 +24,7 @@ public partial class AppIdSettingsExtension : StringSettingsExtensionBase
     {
     }
     public override Symbol Icon => Symbol.Document;
-    public override string Label => "AppID";
+    public override string Label => "APP ID";
     public override string Description => Label;
     public override string Token => "AppID";
 }
