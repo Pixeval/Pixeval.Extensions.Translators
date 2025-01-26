@@ -11,7 +11,7 @@ public partial class ApiKeySettingsExtension:StringSettingsExtensionBase
 
     public override void OnValueChanged(string value)
     {
-        ExtensionsHost.Current.Translator.AuthKey = value.TrimStart('"');
+        ExtensionsHost.Current.Translator.AuthKey = value;
     }
 
     public override string? Placeholder { get; }
@@ -24,8 +24,9 @@ public partial class ApiKeySettingsExtension:StringSettingsExtensionBase
     {
     }
 
-    public override Symbol Icon => Symbol.Document;
-    public override string Label => "AppID";
-    public override string Description => Label;
-    public override string Token => "AppID";
+    public override Symbol Icon => Symbol.Key;
+    public override string Label => "API Key";
+    public override string Description => "百度翻译 API Key";
+    public override string Token => "Key";
+
 }

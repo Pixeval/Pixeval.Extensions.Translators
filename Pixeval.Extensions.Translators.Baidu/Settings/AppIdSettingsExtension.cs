@@ -11,7 +11,7 @@ public partial class AppIdSettingsExtension : StringSettingsExtensionBase
 
     public override void OnValueChanged(string value)
     {
-        ExtensionsHost.Current.Translator.AppId = value.TrimStart('"');
+        ExtensionsHost.Current.Translator.AppId = value;
     }
 
     public override string? Placeholder { get; }
@@ -23,9 +23,8 @@ public partial class AppIdSettingsExtension : StringSettingsExtensionBase
     public override void OnExtensionUnloaded()
     {
     }
-
-    public override Symbol Icon => Symbol.Key;
-    public override string Label => "API Key";
-    public override string Description => "百度翻译 API Key";
-    public override string Token => "Key";
+    public override Symbol Icon => Symbol.Document;
+    public override string Label => "AppID";
+    public override string Description => Label;
+    public override string Token => "AppID";
 }
