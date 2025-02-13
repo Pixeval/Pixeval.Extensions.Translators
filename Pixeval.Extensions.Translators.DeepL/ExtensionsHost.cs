@@ -1,6 +1,5 @@
-﻿using Pixeval.Extensions.Common;
+using Pixeval.Extensions.Common;
 using Pixeval.Extensions.SDK;
-using Pixeval.Extensions.SDK.Transformers;
 using Pixeval.Extensions.Translators.DeepL.Settings;
 using Pixeval.Extensions.Translators.DeepL.Translators;
 using System.Globalization;
@@ -10,7 +9,7 @@ using System.Runtime.InteropServices.Marshalling;
 namespace Pixeval.Extensions.Translators.DeepL;
 
 [GeneratedComClass]
-public partial class ExtensionsHost:ExtensionsHostBase
+public partial class ExtensionsHost : ExtensionsHostBase
 {
     public static string TempDirectory { get; private set; } = "";
 
@@ -40,16 +39,16 @@ public partial class ExtensionsHost:ExtensionsHostBase
     }
 
     public override string Version => "1.0.0";
+
     public static ExtensionsHost Current { get; } = new();
 
     [UnmanagedCallersOnly(EntryPoint = nameof(DllGetExtensionsHost))]
-    private static unsafe int DllGetExtensionsHost(void** ppv)
-    {
-        return DllGetExtensionsHost(ppv, Current);
-    }
+    private static unsafe int DllGetExtensionsHost(void** ppv) => DllGetExtensionsHost(ppv, Current);
+
     public override IExtension[] Extensions { get; }
 
     public DeepLTranslator Translator { get; set; }
+
     public override void Initialize(string cultureName, string tempDirectory, string extensionDirectory)
     {
         TempDirectory = tempDirectory;
@@ -57,6 +56,7 @@ public partial class ExtensionsHost:ExtensionsHostBase
         CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = new(cultureName);
         Translator.TargetLanguage = cultureName;
     }
+
     public ExtensionsHost()
     {
         Translator = new DeepLTranslator();

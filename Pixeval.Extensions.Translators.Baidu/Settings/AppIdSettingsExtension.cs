@@ -1,4 +1,4 @@
-﻿using System.Runtime.InteropServices.Marshalling;
+using System.Runtime.InteropServices.Marshalling;
 using FluentIcons.Common;
 using Pixeval.Extensions.SDK.Settings;
 
@@ -14,7 +14,7 @@ public partial class AppIdSettingsExtension : StringSettingsExtensionBase
         ExtensionsHost.Current.Translator.AppId = value;
     }
 
-    public override string? Placeholder { get; }
+    public override string? Placeholder => "APP ID";
 
     public override void OnExtensionLoaded()
     {
@@ -23,8 +23,12 @@ public partial class AppIdSettingsExtension : StringSettingsExtensionBase
     public override void OnExtensionUnloaded()
     {
     }
+
     public override Symbol Icon => Symbol.Document;
+
     public override string Label => "APP ID";
+
     public override string Description => Label;
+
     public override string Token => "AppID";
 }

@@ -1,6 +1,6 @@
-﻿//https://github.com/sangyuxiaowu/Sang.Baidu.TranslateAPI/blob/main/Sang.Baidu.TranslateAPI/BaiduTranslator.cs
+//https://github.com/sangyuxiaowu/Sang.Baidu.TranslateAPI/blob/main/Sang.Baidu.TranslateAPI/BaiduTranslator.cs
+#nullable disable
 
-using System.Net.Http.Json;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text;
@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 using System.Web;
 
 namespace Pixeval.Extensions.Translators.Baidu.Client;
-#nullable disable
+
 /// <summary>
 /// 文档：https://fanyi-api.baidu.com/doc/21
 /// </summary>
@@ -92,8 +92,6 @@ public class BaiduTranslatorClient
     /// <param name="text">请求翻译文本，长度控制在 6000 bytes以内（汉字约为输入参数 2000 个）</param>
     /// <param name="toLanguage">翻译目标语言</param>
     /// <param name="fromLanguage">翻译源语言，可为auto，自动检测</param>
-    /// <param name="salt">设置后将使用传入的随机数</param>
-    /// <param name="sign">设置后将使用传入的签名结果</param>
     /// <returns></returns>
     public async Task<BaiduTranslateResult> Translate(string text, string toLanguage, string fromLanguage = "auto")
     {
@@ -185,14 +183,13 @@ public class BaiduTranslatorClient
     }
 
 }
+
 [JsonSerializable(typeof(BaiduTranslateResult))]
 [JsonSerializable(typeof(List<TransResult>))]
 [JsonSerializable(typeof(TransResult))]
 [JsonSerializable(typeof(bool))]
 [JsonSerializable(typeof(string))]
-internal partial class SourceGenerationContext : JsonSerializerContext
-{
-}
+internal partial class SourceGenerationContext : JsonSerializerContext;
 
 public class BaiduTranslateResult
 {
@@ -233,7 +230,7 @@ public class BaiduTranslateResult
     /// <returns></returns>
     public string GetResult()
     {
-        return Trans_Result != null && Trans_Result.Count > 0 ? Trans_Result[0].Dst : null;
+        return Trans_Result is { Count: > 0 } ? Trans_Result[0].Dst : null;
     }
 
 }
@@ -254,6 +251,7 @@ public class TransResult
     [JsonPropertyName("dst")]
     public string Dst { get; set; }
 }
+
 public static class Cryptography
 {   
 
@@ -266,12 +264,9 @@ public static class Cryptography
     /// <returns>计算结果</returns>
     public static string MD5(this string str, bool isUpper = false, bool isBig = true)
     {
-        using (var md5 = System.Security.Cryptography.MD5.Create())
-        {
-            var result = md5.ComputeHash(Encoding.UTF8.GetBytes(str));
-            var strResult = isBig ? BitConverter.ToString(result) : BitConverter.ToString(result, 4, 8);
-            return isUpper ? strResult.Replace("-", "") : strResult.Replace("-", "").ToLower();
-        }       
+        var result = System.Security.Cryptography.MD5.HashData(Encoding.UTF8.GetBytes(str));
+        var strResult = isBig ? BitConverter.ToString(result) : BitConverter.ToString(result, 4, 8);
+        return isUpper ? strResult.Replace("-", "") : strResult.Replace("-", "").ToLower();
     }
 
     /// <summary>
@@ -282,12 +277,8 @@ public static class Cryptography
     /// <returns>计算结果</returns>
     public static string SHA1(this string str, bool isUpper = false)
     {
-        using (var sha1 = System.Security.Cryptography.SHA1.Create())
-        {
-            var result = sha1.ComputeHash(Encoding.UTF8.GetBytes(str));
-            var strResult = BitConverter.ToString(result);
-            return isUpper ? strResult.Replace("-", "") : strResult.Replace("-", "").ToLower();
-        }
+        var result = System.Security.Cryptography.SHA1.HashData(Encoding.UTF8.GetBytes(str));
+        var strResult = BitConverter.ToString(result);
+        return isUpper ? strResult.Replace("-", "") : strResult.Replace("-", "").ToLower();
     }
-
 }

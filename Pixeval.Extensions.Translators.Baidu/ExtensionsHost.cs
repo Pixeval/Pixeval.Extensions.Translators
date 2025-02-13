@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.Marshalling;
 using Pixeval.Extensions.Common;
@@ -9,7 +9,7 @@ using Pixeval.Extensions.Translators.Baidu.Translators;
 namespace Pixeval.Extensions.Translators.Baidu;
 
 [GeneratedComClass]
-public partial class ExtensionsHost:ExtensionsHostBase
+public partial class ExtensionsHost : ExtensionsHostBase
 {
     public static string TempDirectory { get; private set; } = "";
 
@@ -39,16 +39,16 @@ public partial class ExtensionsHost:ExtensionsHostBase
     }
 
     public override string Version => "1.0.0";
+
     public static ExtensionsHost Current { get; } = new();
 
     [UnmanagedCallersOnly(EntryPoint = nameof(DllGetExtensionsHost))]
-    private static unsafe int DllGetExtensionsHost(void** ppv)
-    {
-        return DllGetExtensionsHost(ppv, Current);
-    }
+    private static unsafe int DllGetExtensionsHost(void** ppv) => DllGetExtensionsHost(ppv, Current);
+
     public override IExtension[] Extensions { get; }
 
     public BaiduTranslator Translator { get; set; }
+
     public override void Initialize(string cultureName, string tempDirectory, string extensionDirectory)
     {
         TempDirectory = tempDirectory;
@@ -56,6 +56,7 @@ public partial class ExtensionsHost:ExtensionsHostBase
         CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = new(cultureName);
         Translator.TargetLanguage = cultureName.Split('-').First();
     }
+
     public ExtensionsHost()
     {
         Translator = new BaiduTranslator();
