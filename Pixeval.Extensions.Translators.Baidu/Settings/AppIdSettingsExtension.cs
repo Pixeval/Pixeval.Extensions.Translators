@@ -7,7 +7,7 @@ namespace Pixeval.Extensions.Translators.Baidu.Settings;
 [GeneratedComClass]
 public partial class AppIdSettingsExtension : StringSettingsExtensionBase
 {
-    public override string GetDefaultValue() => "";
+    public override string DefaultValue => "";
 
     public override void OnValueChanged(string value)
     {

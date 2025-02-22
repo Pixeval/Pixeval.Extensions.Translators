@@ -7,7 +7,7 @@ namespace Pixeval.Extensions.Translators.DeepL.Settings;
 [GeneratedComClass]
 public partial class ApiKeySettingsExtension : StringSettingsExtensionBase
 {
-    public override string GetDefaultValue() => "";
+    public override string DefaultValue => "";
 
     public override void OnValueChanged(string value)
     {

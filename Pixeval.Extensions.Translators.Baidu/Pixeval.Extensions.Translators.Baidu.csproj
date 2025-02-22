@@ -7,18 +7,15 @@
         <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
         <PublishAot>true</PublishAot>
         <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-        <IsAotCompatible>True</IsAotCompatible>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
         <IsAotCompatible>True</IsAotCompatible>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Pixeval.Extensions.SDK" Version="4.3.6" />
+        <PackageReference Include="Pixeval.Extensions.SDK" Version="4.3.9-dev-1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="Resources/logo.png" Link="logo.png" LogicalName="logo" />
     </ItemGroup>
 
 </Project>

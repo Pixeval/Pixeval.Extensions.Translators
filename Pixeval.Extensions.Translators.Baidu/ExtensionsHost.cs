@@ -19,11 +19,11 @@ public partial class ExtensionsHost : ExtensionsHostBase
 
     public override string AuthorName => "Betta_Fish";
 
-    public override string ExtensionLink => "https://github.com/zxbmmmmmmmmm";
+    public override string ExtensionLink => "https://github.com/Pixeval/Pixeval.Extensions.Translators";
 
     public override string HelpLink => "https://github.com/zxbmmmmmmmmm";
 
-    public override string Description => "百度翻译插件，需要手动输入API Key";
+    public override string Description => "百度翻译扩展，需要手动输入API Key";
 
     public override byte[]? Icon
     {

@@ -15,15 +15,15 @@ public partial class ExtensionsHost : ExtensionsHostBase
 
     public static string ExtensionDirectory { get; private set; } = "";
 
-    public override string ExtensionName => "DeepL Translator";
+    public override string ExtensionName => "DeepL 翻译";
 
     public override string AuthorName => "Betta_Fish";
 
-    public override string ExtensionLink => "https://github.com/zxbmmmmmmmmm";
+    public override string ExtensionLink => "https://github.com/Pixeval/Pixeval.Extensions.Translators";
 
     public override string HelpLink => "https://github.com/zxbmmmmmmmmm";
 
-    public override string Description => "DeepL 翻译插件";
+    public override string Description => "DeepL 翻译扩展，需要手动输入API Key";
 
     public override byte[]? Icon
     {
@@ -60,6 +60,6 @@ public partial class ExtensionsHost : ExtensionsHostBase
     public ExtensionsHost()
     {
         Translator = new DeepLTranslator();
-        Extensions = [Translator,new ApiKeySettingsExtension()];
+        Extensions = [Translator, new ApiKeySettingsExtension()];
     }
 }
