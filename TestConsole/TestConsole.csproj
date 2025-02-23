@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
@@ -15,7 +15,9 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Pixeval.Extensions.Translators.Baidu\Pixeval.Extensions.Translators.Baidu.csproj" />
+        <ProjectReference Include="..\Pixeval.Extensions.Translators.DeepLX\Pixeval.Extensions.Translators.DeepLX.csproj" />
         <ProjectReference Include="..\Pixeval.Extensions.Translators.DeepL\Pixeval.Extensions.Translators.DeepL.csproj" />
+        <ProjectReference Include="..\Pixeval.Extensions.Translators.Ollama\Pixeval.Extensions.Translators.Ollama.csproj" />
     </ItemGroup>
 
 </Project>
