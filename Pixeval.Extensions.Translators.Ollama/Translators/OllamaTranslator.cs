@@ -8,8 +8,6 @@ namespace Pixeval.Extensions.Translators.Ollama.Translators;
 [GeneratedComClass]
 public partial class OllamaTranslator : TextTransformerCommandExtensionBase
 {
-    public string TargetLanguage { get; set; } = null!;
-
     public override Symbol Icon => Symbol.Translate;
 
     public override string Label => "翻译";
@@ -20,7 +18,7 @@ public partial class OllamaTranslator : TextTransformerCommandExtensionBase
 
     public override void OnExtensionLoaded()
     {
-        TranslateService = new OllamaTranslateService();
+        TranslateService = new();
     }
 
     public override void OnExtensionUnloaded()

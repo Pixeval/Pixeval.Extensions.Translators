@@ -17,15 +17,15 @@ public class BaiduTranslatorClient
     /// <summary>
     /// APPID
     /// </summary>
-    private string _appId;
+    public static string AppId;
 
     /// <summary>
     /// 密钥
     /// </summary>
-    private string _secretKey;
+    public static string SecretKey;
 
     /// <summary>
-    ///  翻译服务终结点
+    /// 翻译服务终结点
     /// </summary>
     private readonly string _endpoint;
 
@@ -38,28 +38,20 @@ public class BaiduTranslatorClient
     /// <summary>
     /// 构造函数
     /// </summary>
-    /// <param name="appId">APPID</param>
-    /// <param name="secretKey">密钥</param>
     /// <param name="endpoint">翻译服务终结点</param>
-    public BaiduTranslatorClient(string appId, string secretKey, string endpoint = "https://fanyi-api.baidu.com/api/trans/vip/translate")
+    public BaiduTranslatorClient(string endpoint = "https://fanyi-api.baidu.com/api/trans/vip/translate")
     {
-        _appId = appId;
-        _secretKey = secretKey;
         _endpoint = endpoint;
-        _httpClient = new HttpClient { Timeout = TimeSpan.FromSeconds(10) }; // 设置超时时间
+        _httpClient = new() { Timeout = TimeSpan.FromSeconds(10) }; // 设置超时时间
     }
 
     /// <summary>
     /// 构造函数
     /// </summary>
-    /// <param name="appId">APPID</param>
-    /// <param name="secretKey">密钥</param>
     /// <param name="httpClient">HttpClient</param>
     /// <param name="endpoint">翻译服务终结点</param>
-    public BaiduTranslatorClient(string appId, string secretKey, HttpClient httpClient, string endpoint = "https://fanyi-api.baidu.com/api/trans/vip/translate")
+    public BaiduTranslatorClient(HttpClient httpClient, string endpoint = "https://fanyi-api.baidu.com/api/trans/vip/translate")
     {
-        _appId = appId;
-        _secretKey = secretKey;
         _endpoint = endpoint;
         _httpClient = httpClient;
     }
@@ -71,8 +63,8 @@ public class BaiduTranslatorClient
     /// <param name="secretKey">密钥</param>
     public void SetAppIdAndSecretKey(string appId, string secretKey)
     {
-        _appId = appId;
-        _secretKey = secretKey;
+        AppId = appId;
+        SecretKey = secretKey;
     }
 
     /// <summary>
@@ -100,17 +92,14 @@ public class BaiduTranslatorClient
             .NextInt64(10000000000)
             .ToString()
             .PadLeft(10, '0');
-        var sign = BitConverter.ToString(
-                MD5.Create().ComputeHash(Encoding.Default.GetBytes(
-                    _appId + text + salt + _secretKey)))
-            .Replace("-", "")
-            .ToLower();
+        var sign = Convert.ToHexStringLower(MD5.HashData(Encoding.Default.GetBytes(
+            AppId + text + salt + SecretKey)));
 
         var query = new StringBuilder()
             .Append($"?q={HttpUtility.UrlEncode(text)}")
             .Append($"&from={fromLanguage}")
             .Append($"&to={toLanguage}")
-            .Append($"&appid={_appId}")
+            .Append($"&appid={AppId}")
             .Append($"&salt={salt}")
             .Append($"&sign={sign}")
             .ToString();
@@ -125,11 +114,11 @@ public class BaiduTranslatorClient
             if (response.IsSuccessStatusCode)
             {
                 var str = await response.Content.ReadAsStringAsync();
-                var result  = JsonSerializer.Deserialize<BaiduTranslateResult>(
+                var result  = JsonSerializer.Deserialize(
                     str, SourceGenerationContext.Default.BaiduTranslateResult);
                 return result;
             }
-            return new BaiduTranslateResult { Error_Code = response.StatusCode.ToString(), Error_Msg = response.ReasonPhrase };
+            return new() { Error_Code = response.StatusCode.ToString(), Error_Msg = response.ReasonPhrase };
 #else
                 var response = await _httpClient.GetAsync(url);
                 if (response.IsSuccessStatusCode)
@@ -170,7 +159,7 @@ public class BaiduTranslatorClient
         }
         catch (Exception ex)
         {
-            return new BaiduTranslateResult { Error_Code = "Exception", Error_Msg = ex.Message };
+            return new() { Error_Code = "Exception", Error_Msg = ex.Message };
         }
     }
 
@@ -232,7 +221,6 @@ public class BaiduTranslateResult
     {
         return Trans_Result is { Count: > 0 } ? Trans_Result[0].Dst : null;
     }
-
 }
 
 /// <summary>

@@ -54,12 +54,11 @@ public partial class ExtensionsHost : ExtensionsHostBase
         TempDirectory = tempDirectory;
         ExtensionDirectory = extensionDirectory;
         CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = new(cultureName);
-        Translator.TargetLanguage = cultureName.Split('-').First();
     }
 
     public ExtensionsHost()
     {
-        Translator = new BaiduTranslator();
+        Translator = new();
         Extensions = [Translator, new AppIdSettingsExtension(), new ApiKeySettingsExtension()];
     }
 }

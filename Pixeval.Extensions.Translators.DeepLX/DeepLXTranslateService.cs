@@ -52,7 +52,7 @@ public class DeepLXTranslateService : IDisposable
             if (Used)
                 ClearClient();
             else if (string.IsNullOrWhiteSpace(EndPoint))
-                _httpClient.BaseAddress = new Uri("http://localhost:" + field);
+                _httpClient.BaseAddress = new("http://localhost:" + field);
         }
     } = 1188;
 
@@ -65,7 +65,7 @@ public class DeepLXTranslateService : IDisposable
             if (Used)
                 ClearClient();
             else
-                _httpClient.BaseAddress = new Uri(!EndPoint.Contains("://")
+                _httpClient.BaseAddress = new(!EndPoint.Contains("://")
                     ? "http://" + value
                     : value);
         }
@@ -95,7 +95,7 @@ public class DeepLXTranslateService : IDisposable
         new()
         {
             Timeout = TimeSpan.FromSeconds(Timeout),
-            BaseAddress = new Uri(
+            BaseAddress = new(
                 string.IsNullOrWhiteSpace(EndPoint)
                     ? "http://localhost:" + Port
                     : EndPoint.Contains("://")

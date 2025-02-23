@@ -19,8 +19,4 @@
         <EmbeddedResource Include="Resources/logo.png" Link="logo.png" LogicalName="logo" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Assets\" />
-    </ItemGroup>
-
 </Project>

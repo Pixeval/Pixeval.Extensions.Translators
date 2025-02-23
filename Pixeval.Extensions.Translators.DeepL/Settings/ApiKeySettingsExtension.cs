@@ -1,6 +1,7 @@
 using FluentIcons.Common;
 using Pixeval.Extensions.SDK.Settings;
 using System.Runtime.InteropServices.Marshalling;
+using Pixeval.Extensions.Translators.DeepL.Translators;
 
 namespace Pixeval.Extensions.Translators.DeepL.Settings;
 
@@ -11,10 +12,10 @@ public partial class ApiKeySettingsExtension : StringSettingsExtensionBase
 
     public override void OnValueChanged(string value)
     {
-        ExtensionsHost.Current.Translator.AuthKey = value;
+        DeepLTranslator.AuthKey = value;
     }
 
-    public override string? Placeholder => "API Key";
+    public override string Placeholder => "API Key";
 
     public override void OnExtensionLoaded()
     {

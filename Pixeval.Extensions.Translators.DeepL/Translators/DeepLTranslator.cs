@@ -1,3 +1,4 @@
+using System.Globalization;
 using DeepL;
 using FluentIcons.Common;
 using Pixeval.Extensions.Common.Commands.Transformers;
@@ -9,15 +10,13 @@ namespace Pixeval.Extensions.Translators.DeepL.Translators;
 [GeneratedComClass]
 public partial class DeepLTranslator : TextTransformerCommandExtensionBase
 {
-    public string TargetLanguage { get; set; } = null!;
+    public static string AuthKey { get; set; } = "";
 
     public override Symbol Icon => Symbol.Translate;
 
     public override string Label => "翻译";
 
     public override string Description => Label;
-
-    public string AuthKey { get; set; } = "";
 
     public override void OnExtensionLoaded()
     {
@@ -31,7 +30,7 @@ public partial class DeepLTranslator : TextTransformerCommandExtensionBase
     {
         var translator = new Translator(AuthKey);
         var translatedText = await translator.TranslateTextAsync(
-            originalStream, null, TargetLanguage);
+            originalStream, null, CultureInfo.CurrentCulture.Name);
         return translatedText.Text;
     }
 }

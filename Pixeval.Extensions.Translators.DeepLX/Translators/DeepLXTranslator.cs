@@ -16,7 +16,7 @@ public partial class DeepLXTranslator : TextTransformerCommandExtensionBase
 
     public override void OnExtensionLoaded()
     {
-        TranslateService = new DeepLXTranslateService();
+        TranslateService = new();
     }
 
     public override void OnExtensionUnloaded()

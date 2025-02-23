@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices.Marshalling;
+using System.Globalization;
+using System.Runtime.InteropServices.Marshalling;
 using FluentIcons.Common;
 using Pixeval.Extensions.Common.Commands.Transformers;
 using Pixeval.Extensions.SDK.Transformers;
@@ -9,14 +10,11 @@ namespace Pixeval.Extensions.Translators.Baidu.Translators;
 [GeneratedComClass]
 public partial class BaiduTranslator : TextTransformerCommandExtensionBase
 {
-    public string TargetLanguage { get; set; } = null!;
     public override Symbol Icon => Symbol.Translate;
 
     public override string Label => "翻译";
 
     public override string Description => Label;
-    public string AuthKey { get; set; } = "";
-    public string AppId { get; set; } = "";
 
     public override void OnExtensionLoaded()
     {
@@ -28,13 +26,10 @@ public partial class BaiduTranslator : TextTransformerCommandExtensionBase
 
     public override async Task<string?> TransformAsync(string originalStream, TextTransformerType type)
     {
-        var translator = new BaiduTranslatorClient(AppId,AuthKey);
-        var data = await translator.Translate(
-           originalStream,TargetLanguage);
+        var translator = new BaiduTranslatorClient();
+        var data = await translator.Translate(originalStream, CultureInfo.CurrentCulture.Name.Split('-')[0]);
         if (!data.Success)
-        {
             return "翻译失败:" + data.Error_Msg;
-        }
-        return data.Trans_Result.First().Dst;
+        return data.Trans_Result[0].Dst;
     }
 }

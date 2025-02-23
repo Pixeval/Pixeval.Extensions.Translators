@@ -45,21 +45,16 @@ public partial class ExtensionsHost : ExtensionsHostBase
     [UnmanagedCallersOnly(EntryPoint = nameof(DllGetExtensionsHost))]
     private static unsafe int DllGetExtensionsHost(void** ppv) => DllGetExtensionsHost(ppv, Current);
 
-    public override IExtension[] Extensions { get; }
-
-    public DeepLTranslator Translator { get; set; }
+    public override IExtension[] Extensions { get; } =
+    [
+        new DeepLTranslator(),
+        new ApiKeySettingsExtension()
+    ];
 
     public override void Initialize(string cultureName, string tempDirectory, string extensionDirectory)
     {
         TempDirectory = tempDirectory;
         ExtensionDirectory = extensionDirectory;
         CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = new(cultureName);
-        Translator.TargetLanguage = cultureName;
-    }
-
-    public ExtensionsHost()
-    {
-        Translator = new DeepLTranslator();
-        Extensions = [Translator, new ApiKeySettingsExtension()];
     }
 }
