@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.Marshalling;
 using Pixeval.Extensions.Common;
@@ -10,7 +11,10 @@ namespace Pixeval.Extensions.Translators.Ollama;
 [GeneratedComClass]
 public partial class ExtensionsHost : ExtensionsHostBase
 {
-    public override void Initialize(string cultureName, string tempDirectory, string extensionDirectory) => throw new NotImplementedException();
+    public override void Initialize(string cultureName, string tempDirectory, string extensionDirectory)
+    {
+        CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = new(cultureName);
+    }   
 
     public override string ExtensionName => "Ollama 翻译";
 
@@ -34,6 +38,7 @@ public partial class ExtensionsHost : ExtensionsHostBase
         new OllamaTranslator(),
         new ModelNameSettingsExtension(),
         new SystemInstructionSettingsExtension(),
+        new PortSettingsExtension(),
     ];
 
     public override byte[]? Icon

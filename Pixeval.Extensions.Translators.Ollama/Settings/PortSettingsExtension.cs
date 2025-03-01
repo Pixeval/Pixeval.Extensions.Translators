@@ -3,7 +3,7 @@ using FluentIcons.Common;
 using Pixeval.Extensions.SDK.Settings;
 using Pixeval.Extensions.Translators.Ollama.Translators;
 
-namespace Pixeval.Extensions.Translators.DeepLX.Settings;
+namespace Pixeval.Extensions.Translators.Ollama.Settings;
 
 [GeneratedComClass]
 public partial class PortSettingsExtension : IntSettingsExtensionBase
