@@ -14,7 +14,17 @@ public class OllamaTranslateService
     {
         var client = new OllamaChatClient(new Uri($"http://localhost:{Port}/"), ModelName);
         var response = await client.GetResponseAsync(SystemInstruction + originalStream);
-        return response.Message.Text;
+        return RemoveTags(response.Message.Text);
+    }
+    public static string? RemoveTags(string? input)
+    {
+        if (string.IsNullOrEmpty(input)) return input;
+        const string startTag = "<think>";
+        const string endTag = "</think>";
+
+        if (!input.StartsWith(startTag)) return input;
+        var endIndex = input.IndexOf(endTag, startTag.Length, StringComparison.Ordinal);
+        return endIndex == -1 ? input : input[(endIndex + endTag.Length)..];
     }
 }
 
