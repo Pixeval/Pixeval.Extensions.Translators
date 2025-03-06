@@ -1,6 +1,7 @@
 using System.Runtime.InteropServices.Marshalling;
 using FluentIcons.Common;
 using Pixeval.Extensions.SDK.Settings;
+using Pixeval.Extensions.Translators.DeepLX.Strings;
 using Pixeval.Extensions.Translators.DeepLX.Translators;
 
 namespace Pixeval.Extensions.Translators.DeepLX.Settings;
@@ -19,13 +20,13 @@ public partial class TimeoutSettingsExtension : IntSettingsExtensionBase
         DeepLXTranslator.TranslateService.Timeout = value;
     }
 
-    public override string Placeholder => "超时秒数";
+    public override string Placeholder => Label;
 
-    public override Symbol Icon => Symbol.Key;
+    public override Symbol Icon => Symbol.Timer;
 
-    public override string Label => "DeepLX请求超时时间";
+    public override string Label => Resource.TimeoutSettingsLabel;
 
-    public override string Description => "DeepLX请求超时秒数";
+    public override string Description => Resource.TimeoutSettingsDescription;
 
     public override string Token => "Timeout";
 }

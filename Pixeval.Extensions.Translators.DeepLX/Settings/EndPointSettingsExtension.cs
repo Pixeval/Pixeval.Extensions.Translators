@@ -1,6 +1,7 @@
 using System.Runtime.InteropServices.Marshalling;
 using FluentIcons.Common;
 using Pixeval.Extensions.SDK.Settings;
+using Pixeval.Extensions.Translators.DeepLX.Strings;
 using Pixeval.Extensions.Translators.DeepLX.Translators;
 
 namespace Pixeval.Extensions.Translators.DeepLX.Settings;
@@ -15,13 +16,13 @@ public partial class EndPointSettingsExtension : StringSettingsExtensionBase
         DeepLXTranslator.TranslateService.EndPoint = value;
     }
 
-    public override string Placeholder => "代理服务器";
+    public override string Placeholder => Label;
 
     public override Symbol Icon => Symbol.PointScan;
 
-    public override string Label => "DeepLX服务器地址";
+    public override string Label => Resource.EndPointSettingsLabel;
 
-    public override string Description => "留空则会自动创建一个服务器使用，若填入自己的DeepLX服务器地址则不会创建，且以下的设置项都无效";
+    public override string Description => Resource.EndPointSettingsDescription;
 
     public override string Token => "EndPoint";
 }

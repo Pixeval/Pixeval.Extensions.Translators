@@ -4,6 +4,7 @@ using FluentIcons.Common;
 using Pixeval.Extensions.Common.Commands.Transformers;
 using Pixeval.Extensions.SDK.Transformers;
 using System.Runtime.InteropServices.Marshalling;
+using Pixeval.Extensions.Translators.DeepL.Strings;
 
 namespace Pixeval.Extensions.Translators.DeepL.Translators;
 
@@ -14,7 +15,7 @@ public partial class DeepLTranslator : TextTransformerCommandExtensionBase
 
     public override Symbol Icon => Symbol.Translate;
 
-    public override string Label => "翻译";
+    public override string Label => Resource.DeepLTranslatorLabel;
 
     public override string Description => Label;
 

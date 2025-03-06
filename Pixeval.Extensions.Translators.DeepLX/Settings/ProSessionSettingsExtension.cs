@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices.Marshalling;
 using FluentIcons.Common;
 using Pixeval.Extensions.SDK.Settings;
+using Pixeval.Extensions.Translators.DeepLX.Strings;
 using Pixeval.Extensions.Translators.DeepLX.Translators;
 
 namespace Pixeval.Extensions.Translators.DeepLX.Settings;
@@ -16,13 +17,13 @@ public partial class ProSessionSettingsExtension : StringSettingsExtensionBase
         DeepLXTranslator.TranslateService.ProSession = value;
     }
 
-    public override string Placeholder => "dl session";
+    public override string Placeholder => Label;
 
     public override Symbol Icon => Symbol.PersonKey;
 
     public override string Label => "dl session";
 
-    public override string Description => "DeepL Pro 令牌，留空则不使用";
+    public override string Description => Resource.ProSessionSettingsDescription;
 
     public override string Token => "DlSession";
 }

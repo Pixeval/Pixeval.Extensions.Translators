@@ -1,6 +1,7 @@
 using System.Runtime.InteropServices.Marshalling;
 using FluentIcons.Common;
 using Pixeval.Extensions.SDK.Settings;
+using Pixeval.Extensions.Translators.DeepLX.Strings;
 using Pixeval.Extensions.Translators.DeepLX.Translators;
 
 namespace Pixeval.Extensions.Translators.DeepLX.Settings;
@@ -19,13 +20,13 @@ public partial class PortSettingsExtension : IntSettingsExtensionBase
         DeepLXTranslator.TranslateService.Port = value;
     }
 
-    public override string Placeholder => "端口号";
+    public override string Placeholder => Label;
 
     public override Symbol Icon => Symbol.SerialPort;
 
-    public override string Label => "DeepLX端口号";
+    public override string Label => Resource.PortSettingsLabel;
 
-    public override string Description => "DeepLX本地服务器使用的端口号，默认为" + DefaultValue;
+    public override string Description => Resource.PortSettingsDescription;
 
     public override string Token => "Port";
 }

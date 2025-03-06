@@ -3,13 +3,14 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text;
 using System.Text.Json;
+using Pixeval.Extensions.SDK;
 using Pixeval.Extensions.Translators.DeepLX.Translators.Network;
 
 namespace Pixeval.Extensions.Translators.DeepLX;
 
 public class DeepLXTranslateService : IDisposable
 {
-    private static string ExecutablePath => Path.Combine(ExtensionsHost.ExtensionDirectory,
+    private static string ExecutablePath => Path.Combine(ExtensionsHostBase.ExtensionDirectory,
         @"Pixeval.Extensions.Translators.DeepLX.Assets\deeplx_windows_amd64.exe");
 
     public string AccessToken

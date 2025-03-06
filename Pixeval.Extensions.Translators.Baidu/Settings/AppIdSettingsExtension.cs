@@ -15,7 +15,7 @@ public partial class AppIdSettingsExtension : StringSettingsExtensionBase
         BaiduTranslatorClient.AppId = value;
     }
 
-    public override string? Placeholder => "APP ID";
+    public override string Placeholder => Label;
 
     public override Symbol Icon => Symbol.Document;
 

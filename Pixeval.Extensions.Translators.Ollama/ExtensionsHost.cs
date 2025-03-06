@@ -1,9 +1,9 @@
-using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.Marshalling;
 using Pixeval.Extensions.Common;
 using Pixeval.Extensions.SDK;
 using Pixeval.Extensions.Translators.Ollama.Settings;
+using Pixeval.Extensions.Translators.Ollama.Strings;
 using Pixeval.Extensions.Translators.Ollama.Translators;
 
 namespace Pixeval.Extensions.Translators.Ollama;
@@ -11,12 +11,7 @@ namespace Pixeval.Extensions.Translators.Ollama;
 [GeneratedComClass]
 public partial class ExtensionsHost : ExtensionsHostBase
 {
-    public override void Initialize(string cultureName, string tempDirectory, string extensionDirectory)
-    {
-        CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = new(cultureName);
-    }   
-
-    public override string ExtensionName => "Ollama 翻译";
+    public override string ExtensionName => Resource.ExtensionHostName;
 
     public override string AuthorName => "Betta_Fish";
 
@@ -24,7 +19,7 @@ public partial class ExtensionsHost : ExtensionsHostBase
 
     public override string HelpLink => "https://github.com/zxbmmmmmmmmm";
 
-    public override string Description => "通过Ollama调用本地运行的大模型翻译服务，需要预先安装Ollama";
+    public override string Description => Resource.ExtensionHostDescription;
 
     public override string Version => "1.0.0";
 

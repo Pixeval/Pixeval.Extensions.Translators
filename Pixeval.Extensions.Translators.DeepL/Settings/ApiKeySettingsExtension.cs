@@ -15,7 +15,7 @@ public partial class ApiKeySettingsExtension : StringSettingsExtensionBase
         DeepLTranslator.AuthKey = value;
     }
 
-    public override string Placeholder => "API Key";
+    public override string Placeholder => Label;
 
     public override Symbol Icon => Symbol.Key;
 

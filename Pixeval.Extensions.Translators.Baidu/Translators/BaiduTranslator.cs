@@ -4,6 +4,7 @@ using FluentIcons.Common;
 using Pixeval.Extensions.Common.Commands.Transformers;
 using Pixeval.Extensions.SDK.Transformers;
 using Pixeval.Extensions.Translators.Baidu.Client;
+using Pixeval.Extensions.Translators.Baidu.Strings;
 
 namespace Pixeval.Extensions.Translators.Baidu.Translators;
 
@@ -12,7 +13,7 @@ public partial class BaiduTranslator : TextTransformerCommandExtensionBase
 {
     public override Symbol Icon => Symbol.Translate;
 
-    public override string Label => "翻译";
+    public override string Label => Resource.BaiduTranslatorLabel;
 
     public override string Description => Label;
 
@@ -20,8 +21,6 @@ public partial class BaiduTranslator : TextTransformerCommandExtensionBase
     {
         var translator = new BaiduTranslatorClient();
         var data = await translator.Translate(originalStream, CultureInfo.CurrentCulture.Name.Split('-')[0]);
-        if (!data.Success)
-            return "翻译失败:" + data.Error_Msg;
-        return data.Trans_Result[0].Dst;
+        return data.Success ? data.Trans_Result[0].Dst : data.Error_Msg;
     }
 }

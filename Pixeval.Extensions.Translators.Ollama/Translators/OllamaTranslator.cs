@@ -10,7 +10,7 @@ public partial class OllamaTranslator : TextTransformerCommandExtensionBase
 {
     public override Symbol Icon => Symbol.Translate;
 
-    public override string Label => "翻译";
+    public override string Label => "Ollama 翻译";
 
     public override string Description => Label;
 

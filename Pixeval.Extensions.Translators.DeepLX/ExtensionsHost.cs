@@ -1,9 +1,9 @@
-using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.Marshalling;
 using Pixeval.Extensions.Common;
 using Pixeval.Extensions.SDK;
 using Pixeval.Extensions.Translators.DeepLX.Settings;
+using Pixeval.Extensions.Translators.DeepLX.Strings;
 using Pixeval.Extensions.Translators.DeepLX.Translators;
 
 namespace Pixeval.Extensions.Translators.DeepLX;
@@ -11,11 +11,7 @@ namespace Pixeval.Extensions.Translators.DeepLX;
 [GeneratedComClass]
 public partial class ExtensionsHost : ExtensionsHostBase
 {
-    public static string TempDirectory { get; private set; } = "";
-
-    public static string ExtensionDirectory { get; private set; } = "";
-
-    public override string ExtensionName => "DeepLX 翻译";
+    public override string ExtensionName => Resource.ExtensionHostName;
 
     public override string AuthorName => "扑克";
 
@@ -23,7 +19,7 @@ public partial class ExtensionsHost : ExtensionsHostBase
 
     public override string HelpLink => "https://github.com/Poker-sang";
 
-    public override string Description => "DeepLX 翻译扩展，无需API Key";
+    public override string Description => Resource.ExtensionHostDescription;
 
     public override byte[]? Icon
     {
@@ -55,11 +51,4 @@ public partial class ExtensionsHost : ExtensionsHostBase
         new AccessTokenSettingsExtension(),
         new ProSessionSettingsExtension()
     ];
-
-    public override void Initialize(string cultureName, string tempDirectory, string extensionDirectory)
-    {
-        TempDirectory = tempDirectory;
-        ExtensionDirectory = extensionDirectory;
-        CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = new(cultureName);
-    }
 }

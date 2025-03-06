@@ -1,4 +1,3 @@
-using Pixeval.Extensions.Translators.Baidu.Client;
 using Pixeval.Extensions.Translators.Ollama;
 
 var translator = new OllamaTranslateService

@@ -1,6 +1,7 @@
 using System.Runtime.InteropServices.Marshalling;
 using FluentIcons.Common;
 using Pixeval.Extensions.SDK.Settings;
+using Pixeval.Extensions.Translators.Ollama.Strings;
 using Pixeval.Extensions.Translators.Ollama.Translators;
 
 namespace Pixeval.Extensions.Translators.Ollama.Settings;
@@ -17,11 +18,11 @@ public partial class ModelNameSettingsExtension : StringSettingsExtensionBase
 
     public override string Placeholder => "";
 
-    public override Symbol Icon => Symbol.Rename;
+    public override Symbol Icon => Symbol.Box;
 
-    public override string Label => "Ollama模型名称";
+    public override string Label => Resource.ModelNameSettingsLabel;
 
-    public override string Description => "通过Ollama调用的模型名称";
+    public override string Description => Resource.ModelNameSettingsDescription;
 
     public override string Token => "ModelName";
 }
