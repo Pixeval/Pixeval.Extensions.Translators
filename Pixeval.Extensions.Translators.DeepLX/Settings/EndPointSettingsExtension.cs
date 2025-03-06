@@ -17,14 +17,6 @@ public partial class EndPointSettingsExtension : StringSettingsExtensionBase
 
     public override string Placeholder => "代理服务器";
 
-    public override void OnExtensionLoaded()
-    {
-    }
-
-    public override void OnExtensionUnloaded()
-    {
-    }
-
     public override Symbol Icon => Symbol.PointScan;
 
     public override string Label => "DeepLX服务器地址";

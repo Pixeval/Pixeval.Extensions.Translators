@@ -17,14 +17,6 @@ public partial class SystemInstructionSettingsExtension : StringSettingsExtensio
 
     public override string Placeholder => "";
 
-    public override void OnExtensionLoaded()
-    {
-    }
-
-    public override void OnExtensionUnloaded()
-    {
-    }
-
     public override Symbol Icon => Symbol.Key;
 
     public override string Label => "系统指令";

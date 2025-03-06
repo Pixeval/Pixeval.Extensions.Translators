@@ -21,14 +21,6 @@ public partial class TimeoutSettingsExtension : IntSettingsExtensionBase
 
     public override string Placeholder => "超时秒数";
 
-    public override void OnExtensionLoaded()
-    {
-    }
-
-    public override void OnExtensionUnloaded()
-    {
-    }
-
     public override Symbol Icon => Symbol.Key;
 
     public override string Label => "DeepLX请求超时时间";

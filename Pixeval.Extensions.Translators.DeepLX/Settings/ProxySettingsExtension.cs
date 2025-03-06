@@ -17,14 +17,6 @@ public partial class ProxySettingsExtension : StringSettingsExtensionBase
 
     public override string Placeholder => "代理服务器";
 
-    public override void OnExtensionLoaded()
-    {
-    }
-
-    public override void OnExtensionUnloaded()
-    {
-    }
-
     public override Symbol Icon => Symbol.Server;
 
     public override string Label => "DeepLX代理服务器";

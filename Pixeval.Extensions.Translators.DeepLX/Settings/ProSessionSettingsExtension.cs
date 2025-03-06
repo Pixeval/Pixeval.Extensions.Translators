@@ -18,14 +18,6 @@ public partial class ProSessionSettingsExtension : StringSettingsExtensionBase
 
     public override string Placeholder => "dl session";
 
-    public override void OnExtensionLoaded()
-    {
-    }
-
-    public override void OnExtensionUnloaded()
-    {
-    }
-
     public override Symbol Icon => Symbol.PersonKey;
 
     public override string Label => "dl session";

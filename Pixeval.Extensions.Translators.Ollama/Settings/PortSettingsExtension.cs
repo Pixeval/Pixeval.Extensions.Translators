@@ -21,14 +21,6 @@ public partial class PortSettingsExtension : IntSettingsExtensionBase
 
     public override string Placeholder => "端口号";
 
-    public override void OnExtensionLoaded()
-    {
-    }
-
-    public override void OnExtensionUnloaded()
-    {
-    }
-
     public override Symbol Icon => Symbol.SerialPort;
 
     public override string Label => "Ollama端口号";

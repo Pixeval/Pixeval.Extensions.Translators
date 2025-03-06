@@ -17,14 +17,6 @@ public partial class ApiKeySettingsExtension : StringSettingsExtensionBase
 
     public override string Placeholder => "API Key";
 
-    public override void OnExtensionLoaded()
-    {
-    }
-
-    public override void OnExtensionUnloaded()
-    {
-    }
-
     public override Symbol Icon => Symbol.Key;
 
     public override string Label => "密钥";

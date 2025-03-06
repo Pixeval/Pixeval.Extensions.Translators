@@ -11,8 +11,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="DeepL.net" Version="1.13.0" />
-        <PackageReference Include="Pixeval.Extensions.SDK" Version="4.3.9-dev-1" />
+        <PackageReference Include="DeepL.net" Version="1.14.0" />
+        <PackageReference Include="Pixeval.Extensions.SDK" Version="4.3.9-dev-3" />
     </ItemGroup>
 
     <ItemGroup>

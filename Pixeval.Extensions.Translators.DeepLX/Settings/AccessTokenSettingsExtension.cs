@@ -17,14 +17,6 @@ public partial class AccessTokenSettingsExtension : StringSettingsExtensionBase
 
     public override string Placeholder => "Access Token";
 
-    public override void OnExtensionLoaded()
-    {
-    }
-
-    public override void OnExtensionUnloaded()
-    {
-    }
-
     public override Symbol Icon => Symbol.Key;
 
     public override string Label => "Access Token";

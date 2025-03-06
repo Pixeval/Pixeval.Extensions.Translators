@@ -17,14 +17,6 @@ public partial class ModelNameSettingsExtension : StringSettingsExtensionBase
 
     public override string Placeholder => "";
 
-    public override void OnExtensionLoaded()
-    {
-    }
-
-    public override void OnExtensionUnloaded()
-    {
-    }
-
     public override Symbol Icon => Symbol.Rename;
 
     public override string Label => "Ollama模型名称";

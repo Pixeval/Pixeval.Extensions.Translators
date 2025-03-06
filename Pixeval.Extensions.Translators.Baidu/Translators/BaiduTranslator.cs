@@ -16,14 +16,6 @@ public partial class BaiduTranslator : TextTransformerCommandExtensionBase
 
     public override string Description => Label;
 
-    public override void OnExtensionLoaded()
-    {
-    }
-
-    public override void OnExtensionUnloaded()
-    {
-    }
-
     public override async Task<string?> TransformAsync(string originalStream, TextTransformerType type)
     {
         var translator = new BaiduTranslatorClient();
