@@ -61,7 +61,7 @@ namespace Pixeval.Extensions.Translators.Ollama.Strings {
         }
         
         /// <summary>
-        ///   查找类似 通过Ollama调用本地运行的大模型翻译服务，需要预先安装 Ollama 的本地化字符串。
+        ///   查找类似 通过 Ollama 调用本地运行的大模型翻译服务，需要预先安装 Ollama 的本地化字符串。
         /// </summary>
         internal static string ExtensionHostDescription {
             get {

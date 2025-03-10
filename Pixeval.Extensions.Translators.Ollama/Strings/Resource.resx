@@ -121,7 +121,7 @@
     <value>Ollama 翻译</value>
   </data>
   <data name="ExtensionHostDescription" xml:space="preserve">
-    <value>通过Ollama调用本地运行的大模型翻译服务，需要预先安装 Ollama</value>
+    <value>通过 Ollama 调用本地运行的大模型翻译服务，需要预先安装 Ollama</value>
   </data>
   <data name="OllamaTranslatorLabel" xml:space="preserve">
     <value>Ollama 翻译</value>

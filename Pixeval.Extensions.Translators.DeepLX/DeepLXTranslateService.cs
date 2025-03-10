@@ -119,14 +119,16 @@ public class DeepLXTranslateService : IDisposable
             _ = arguments.Append($"-s \"{ProSession}\"");
         if (!string.IsNullOrWhiteSpace(Proxy))
             _ = arguments.Append($"-proxy \"{Proxy}\"");
-        var process = new Process();
-        process.StartInfo = new()
+        var process = new Process
         {
-            FileName = ExecutablePath,
-            WindowStyle = ProcessWindowStyle.Hidden,
-            RedirectStandardError = true,
-            RedirectStandardOutput = true,
-            Arguments = arguments.ToString()
+            StartInfo = new()
+            {
+                FileName = ExecutablePath,
+                WindowStyle = ProcessWindowStyle.Hidden,
+                RedirectStandardError = true,
+                RedirectStandardOutput = true,
+                Arguments = arguments.ToString()
+            }
         };
 
         _ = process.Start();
@@ -172,7 +174,7 @@ public class DeepLXTranslateService : IDisposable
             Used = true;
             jsonResultString = await result.Content.ReadAsStringAsync(token).ConfigureAwait(false);
 
-            result.EnsureSuccessStatusCode();
+            _ = result.EnsureSuccessStatusCode();
         }
         catch (OperationCanceledException ex)
             when (!ex.Message.StartsWith("The request was canceled due to the configured HttpClient.Timeout"))
