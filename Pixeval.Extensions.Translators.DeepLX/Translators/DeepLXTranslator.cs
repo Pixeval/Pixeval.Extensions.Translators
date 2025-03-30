@@ -22,6 +22,7 @@ public partial class DeepLXTranslator : TextTransformerCommandExtensionBase
 
     public override void OnExtensionUnloaded()
     {
+        TranslateService.Dispose();
         TranslateService = null!;
     }
 

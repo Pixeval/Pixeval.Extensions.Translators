@@ -13,7 +13,7 @@ public partial class ModelNameSettingsExtension : StringSettingsExtensionBase
 
     public override void OnValueChanged(string value)
     {
-        OllamaTranslator.TranslateService.ModelName = value;
+        OllamaTranslator.ModelName = value;
     }
 
     public override string Placeholder => "";

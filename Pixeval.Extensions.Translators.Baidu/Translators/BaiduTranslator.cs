@@ -17,10 +17,22 @@ public partial class BaiduTranslator : TextTransformerCommandExtensionBase
 
     public override string Description => Label;
 
+    public override void OnExtensionLoaded()
+    {
+        TranslateService = new();
+    }
+
+    public override void OnExtensionUnloaded()
+    {
+        TranslateService.Dispose();
+        TranslateService = null!;
+    }
+
     public override async Task<string?> TransformAsync(string originalStream, TextTransformerType type)
     {
-        var translator = new BaiduTranslatorClient();
-        var data = await translator.Translate(originalStream, CultureInfo.CurrentCulture.Name.Split('-')[0]);
+        var data = await TranslateService.Translate(originalStream, CultureInfo.CurrentCulture.Name.Split('-')[0]);
         return data.Success ? data.Trans_Result[0].Dst : data.Error_Msg;
     }
+
+    public static BaiduTranslatorClient TranslateService { get; private set; } = null!;
 }

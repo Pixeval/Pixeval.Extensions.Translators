@@ -17,12 +17,12 @@ public class BaiduTranslatorClient
     /// <summary>
     /// APPID
     /// </summary>
-    public static string AppId;
+    public static string AppId { get; set; }
 
     /// <summary>
     /// 密钥
     /// </summary>
-    public static string SecretKey;
+    public static string SecretKey { get; set; }
 
     /// <summary>
     /// 翻译服务终结点
@@ -170,7 +170,6 @@ public class BaiduTranslatorClient
     {
         _httpClient?.Dispose();
     }
-
 }
 
 [JsonSerializable(typeof(BaiduTranslateResult))]

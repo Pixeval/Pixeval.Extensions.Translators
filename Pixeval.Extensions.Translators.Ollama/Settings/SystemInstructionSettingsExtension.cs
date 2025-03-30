@@ -13,7 +13,7 @@ public partial class SystemInstructionSettingsExtension : StringSettingsExtensio
 
     public override void OnValueChanged(string value)
     {
-        OllamaTranslator.TranslateService.SystemInstruction = value;
+        OllamaTranslator.SystemInstruction = value;
     }
 
     public override string Placeholder => Label;

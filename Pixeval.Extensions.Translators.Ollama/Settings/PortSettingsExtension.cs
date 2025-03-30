@@ -17,7 +17,7 @@ public partial class PortSettingsExtension : IntSettingsExtensionBase
 
     public override void OnValueChanged(int value)
     {
-        OllamaTranslator.TranslateService.Port = value;
+        OllamaTranslator.Port = value;
     }
 
     public override string Placeholder => Resource.PortSettingsLabel;
