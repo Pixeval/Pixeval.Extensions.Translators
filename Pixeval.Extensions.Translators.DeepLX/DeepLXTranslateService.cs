@@ -141,7 +141,7 @@ public class DeepLXTranslateService : IDisposable
         _process = null;
     }
 
-    public async Task<string?> TranslateAsync(string text, CancellationToken token = default)
+    public async Task<string> TranslateAsync(string text, CancellationToken token = default)
     {
         var target = CultureInfo.CurrentCulture.Name.ToUpper();
         if (!SupportedTargets.Contains(target))
@@ -188,15 +188,16 @@ public class DeepLXTranslateService : IDisposable
 
         try
         {
-            var responseData =
-                JsonSerializer.Deserialize(jsonResultString, typeof(DeepLXTranslateResponse), DeepLXApiContext.Default)
-                    as DeepLXTranslateResponse;
-            return responseData?.Data;
+            if (JsonSerializer.Deserialize(jsonResultString, typeof(DeepLXTranslateResponse), DeepLXApiContext.Default)
+                is DeepLXTranslateResponse { Data : { } data })
+                return data;
         }
         catch
         {
-            return "Cannot parse response as JSON";
+            // ignored
         }
+
+        return "Cannot parse response as JSON";
     }
 
     public void Dispose()

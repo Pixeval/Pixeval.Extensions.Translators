@@ -26,7 +26,7 @@ public partial class DeepLXTranslator : TextTransformerCommandExtensionBase
         TranslateService = null!;
     }
 
-    public override Task<string?> TransformAsync(string originalStream, TextTransformerType type)
+    public override Task<string> TransformAsync(string originalStream, TextTransformerType type)
     {
         return TranslateService.TranslateAsync(originalStream);
     }

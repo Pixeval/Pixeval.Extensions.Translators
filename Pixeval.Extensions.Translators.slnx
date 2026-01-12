@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Pixeval.Extensions.Translators.Baidu/Pixeval.Extensions.Translators.Baidu.csproj" />
+  <Project Path="Pixeval.Extensions.Translators.DeepL/Pixeval.Extensions.Translators.DeepL.csproj" />
+  <Project Path="Pixeval.Extensions.Translators.DeepLX/Pixeval.Extensions.Translators.DeepLX.csproj" />
+  <Project Path="Pixeval.Extensions.Translators.Ollama/Pixeval.Extensions.Translators.Ollama.csproj" />
+</Solution>

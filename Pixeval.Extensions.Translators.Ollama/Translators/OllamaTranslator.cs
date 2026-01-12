@@ -48,16 +48,16 @@ public partial class OllamaTranslator : TextTransformerCommandExtensionBase
         DisposeClient();
     }
 
-    public override async Task<string?> TransformAsync(string originalStream, TextTransformerType type)
+    public override async Task<string> TransformAsync(string originalStream, TextTransformerType type)
     {
         TranslatorCache ??= new(new Uri($"http://localhost:{Port}/"), ModelName);
         var response = await TranslatorCache.GetResponseAsync(SystemInstruction + originalStream);
         return RemoveTags(response.Text);
 
-        static string? RemoveTags(string? input)
+        static string RemoveTags(string? input)
         {
             if (string.IsNullOrEmpty(input))
-                return input;
+                return input ?? "";
             const string startTag = "<think>";
             const string endTag = "</think>";
 

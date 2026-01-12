@@ -28,7 +28,7 @@ public partial class BaiduTranslator : TextTransformerCommandExtensionBase
         TranslateService = null!;
     }
 
-    public override async Task<string?> TransformAsync(string originalStream, TextTransformerType type)
+    public override async Task<string> TransformAsync(string originalStream, TextTransformerType type)
     {
         var data = await TranslateService.Translate(originalStream, CultureInfo.CurrentCulture.Name.Split('-')[0]);
         return data.Success ? data.Trans_Result[0].Dst : data.Error_Msg;

@@ -36,7 +36,7 @@ public partial class DeepLTranslator : TextTransformerCommandExtensionBase
         TranslatorCache = null;
     }
 
-    public override async Task<string?> TransformAsync(string originalStream, TextTransformerType type)
+    public override async Task<string> TransformAsync(string originalStream, TextTransformerType type)
     {
         TranslatorCache ??= new Translator(AuthKey);
         var translatedText = await TranslatorCache.TranslateTextAsync(
