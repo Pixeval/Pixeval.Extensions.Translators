@@ -20,7 +20,7 @@ public partial class AccessTokenSettingsExtension : StringSettingsExtensionBase
 
     public override Symbol Icon => Symbol.Key;
 
-    public override string Label => "Access Token";
+    public override string Label => Resource.AccessTokenSettingsLabel;
 
     public override string Description => Resource.AccessTokenSettingsDescription;
 

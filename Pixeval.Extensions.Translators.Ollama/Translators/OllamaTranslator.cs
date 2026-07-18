@@ -1,8 +1,11 @@
+using System;
 using System.Runtime.InteropServices.Marshalling;
+using System.Threading.Tasks;
 using FluentIcons.Common;
 using Microsoft.Extensions.AI;
 using Pixeval.Extensions.Common.Commands.Transformers;
 using Pixeval.Extensions.SDK.Transformers;
+using Pixeval.Extensions.Translators.Ollama.Strings;
 
 namespace Pixeval.Extensions.Translators.Ollama.Translators;
 
@@ -37,7 +40,7 @@ public partial class OllamaTranslator : TextTransformerCommandExtensionBase
 
     public override Symbol Icon => Symbol.Translate;
 
-    public override string Label => "Ollama 翻译";
+    public override string Label => Resource.OllamaTranslatorLabel;
 
     public override string Description => Label;
 

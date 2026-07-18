@@ -1,9 +1,10 @@
 using System.Globalization;
+using System.Runtime.InteropServices.Marshalling;
+using System.Threading.Tasks;
 using DeepL;
 using FluentIcons.Common;
 using Pixeval.Extensions.Common.Commands.Transformers;
 using Pixeval.Extensions.SDK.Transformers;
-using System.Runtime.InteropServices.Marshalling;
 using Pixeval.Extensions.Translators.DeepL.Strings;
 
 namespace Pixeval.Extensions.Translators.DeepL.Translators;

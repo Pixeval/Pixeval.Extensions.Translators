@@ -2,6 +2,7 @@ using System.Runtime.InteropServices.Marshalling;
 using FluentIcons.Common;
 using Pixeval.Extensions.SDK.Settings;
 using Pixeval.Extensions.Translators.Baidu.Client;
+using Pixeval.Extensions.Translators.Baidu.Strings;
 
 namespace Pixeval.Extensions.Translators.Baidu.Settings;
 
@@ -19,7 +20,7 @@ public partial class AppIdSettingsExtension : StringSettingsExtensionBase
 
     public override Symbol Icon => Symbol.Document;
 
-    public override string Label => "APP ID";
+    public override string Label => Resource.AppIdSettingsLabel;
 
     public override string Description => Label;
 

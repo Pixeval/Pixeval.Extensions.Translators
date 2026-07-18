@@ -1,10 +1,10 @@
+using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 using Pixeval.Extensions.Common;
 using Pixeval.Extensions.SDK;
 using Pixeval.Extensions.Translators.DeepL.Settings;
-using Pixeval.Extensions.Translators.DeepL.Translators;
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.Marshalling;
 using Pixeval.Extensions.Translators.DeepL.Strings;
+using Pixeval.Extensions.Translators.DeepL.Translators;
 
 namespace Pixeval.Extensions.Translators.DeepL;
 
@@ -38,8 +38,8 @@ public partial class ExtensionsHost : ExtensionsHostBase
 
     public static ExtensionsHost Current { get; } = new();
 
-    [UnmanagedCallersOnly(EntryPoint = nameof(DllGetExtensionsHost))]
-    private static unsafe int DllGetExtensionsHost(void** ppv) => DllGetExtensionsHost(ppv, Current);
+    [UnmanagedCallersOnly(EntryPoint = nameof(GetExtensionsHost))]
+    private static unsafe int GetExtensionsHost(void** ppv) => GetExtensionsHost(ppv, Current);
 
     public override IExtension[] Extensions { get; } =
     [

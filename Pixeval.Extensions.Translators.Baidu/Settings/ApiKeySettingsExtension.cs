@@ -16,7 +16,7 @@ public partial class ApiKeySettingsExtension : StringSettingsExtensionBase
         BaiduTranslatorClient.SecretKey = value;
     }
 
-    public override string Placeholder => "API Key";
+    public override string Placeholder => Resource.ApiKeySettingsLabel;
 
     public override Symbol Icon => Symbol.Key;
 

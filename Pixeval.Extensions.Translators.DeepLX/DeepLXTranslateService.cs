@@ -1,8 +1,14 @@
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.IO;
+using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
+using System.Threading.Tasks;
 using Pixeval.Extensions.SDK;
 using Pixeval.Extensions.Translators.DeepLX.Translators.Network;
 

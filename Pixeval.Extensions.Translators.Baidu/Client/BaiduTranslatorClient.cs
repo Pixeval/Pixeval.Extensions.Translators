@@ -1,10 +1,14 @@
 //https://github.com/sangyuxiaowu/Sang.Baidu.TranslateAPI/blob/main/Sang.Baidu.TranslateAPI/BaiduTranslator.cs
 #nullable disable
 
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Text;
-using System.Security.Cryptography;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace Pixeval.Extensions.Translators.Baidu.Client;

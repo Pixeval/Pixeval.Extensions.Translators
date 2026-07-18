@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ExtensionHostName" xml:space="preserve">
+    <value>Ollama Translate</value>
+  </data>
+  <data name="ExtensionHostDescription" xml:space="preserve">
+    <value>Uses Ollama to call a locally hosted LLM translation service. Ollama must be installed first.</value>
+  </data>
+  <data name="OllamaTranslatorLabel" xml:space="preserve">
+    <value>Ollama Translate</value>
+  </data>
+  <data name="ModelNameSettingsDescription" xml:space="preserve">
+    <value>Model name used when calling Ollama</value>
+  </data>
+  <data name="ModelNameSettingsLabel" xml:space="preserve">
+    <value>Ollama Model Name</value>
+  </data>
+  <data name="SystemInstructionSettingsLabel" xml:space="preserve">
+    <value>System Instruction</value>
+  </data>
+  <data name="SystemInstructionSettingsDescription" xml:space="preserve">
+    <value>Content used to guide the model conversation</value>
+  </data>
+  <data name="SystemInstructionSettingsDefaultValue" xml:space="preserve">
+    <value>Translate the user-provided text into Chinese. Do not reply with anything unrelated other than the translated text itself.</value>
+  </data>
+  <data name="PortSettingsLabel" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="PortSettingsDescription" xml:space="preserve">
+    <value>Port used by the local Ollama server</value>
+  </data>
+</root>

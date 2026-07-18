@@ -68,6 +68,15 @@ namespace Pixeval.Extensions.Translators.DeepLX.Strings {
                 return ResourceManager.GetString("AccessTokenSettingsDescription", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   查找类似 访问令牌 的本地化字符串。
+        /// </summary>
+        internal static string AccessTokenSettingsLabel {
+            get {
+                return ResourceManager.GetString("AccessTokenSettingsLabel", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   查找类似 DeepLX 翻译 的本地化字符串。
@@ -138,6 +147,15 @@ namespace Pixeval.Extensions.Translators.DeepLX.Strings {
         internal static string ProSessionSettingsDescription {
             get {
                 return ResourceManager.GetString("ProSessionSettingsDescription", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 Pro 会话 的本地化字符串。
+        /// </summary>
+        internal static string ProSessionSettingsLabel {
+            get {
+                return ResourceManager.GetString("ProSessionSettingsLabel", resourceCulture);
             }
         }
         

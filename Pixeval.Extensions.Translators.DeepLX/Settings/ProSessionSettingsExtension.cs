@@ -21,7 +21,7 @@ public partial class ProSessionSettingsExtension : StringSettingsExtensionBase
 
     public override Symbol Icon => Symbol.PersonKey;
 
-    public override string Label => "dl session";
+    public override string Label => Resource.ProSessionSettingsLabel;
 
     public override string Description => Resource.ProSessionSettingsDescription;
 

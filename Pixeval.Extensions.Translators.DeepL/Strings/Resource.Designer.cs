@@ -59,6 +59,24 @@ namespace Pixeval.Extensions.Translators.DeepL.Strings {
                 resourceCulture = value;
             }
         }
+
+        /// <summary>
+        ///   查找类似 DeepL API Key 的本地化字符串。
+        /// </summary>
+        internal static string ApiKeySettingsDescription {
+            get {
+                return ResourceManager.GetString("ApiKeySettingsDescription", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 API Key 的本地化字符串。
+        /// </summary>
+        internal static string ApiKeySettingsLabel {
+            get {
+                return ResourceManager.GetString("ApiKeySettingsLabel", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   查找类似 DeepL 翻译 的本地化字符串。

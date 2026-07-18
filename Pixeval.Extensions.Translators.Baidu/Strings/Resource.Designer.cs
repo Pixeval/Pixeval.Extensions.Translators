@@ -77,6 +77,15 @@ namespace Pixeval.Extensions.Translators.Baidu.Strings {
                 return ResourceManager.GetString("ApiKeySettingsLabel", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   查找类似 APP ID 的本地化字符串。
+        /// </summary>
+        internal static string AppIdSettingsLabel {
+            get {
+                return ResourceManager.GetString("AppIdSettingsLabel", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   查找类似 百度翻译 的本地化字符串。
